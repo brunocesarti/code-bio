@@ -1,6 +1,10 @@
-#code-bio
+# code-bio
 
 Desafio técnico para avaliar os conhecimentos técnicos necessários para realização das atividades no dia a dia do cargo de Programador de Sistemas.
+
+Diagrama do Modelo ER construído:
+
+![Modelo ER code-bio](https://user-images.githubusercontent.com/12937320/133000375-7d817ce0-753a-4651-b128-9658de94f246.png)
 
 # CodeIgniter 4 Application Starter
 
