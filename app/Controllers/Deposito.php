@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
+use App\Models\TransacoesModel;
 
 class Deposito extends ResourceController
 {
@@ -13,7 +14,17 @@ class Deposito extends ResourceController
      */
     public function index()
     {
-        //
+        $model = new DepositoModel();
+      
+        $data = $model->findAll();
+      
+        $response = [
+            'status' => 200,
+            'error' => null,
+            'messages' => "Members Found",
+            "data" => $data,
+        ];
+        return $this->respond($response);
     }
 
     /**
@@ -23,7 +34,21 @@ class Deposito extends ResourceController
      */
     public function show($id = null)
     {
-        //
+        $model = new DepositoModel();
+      
+        $data = $model->where(['id' => $id])->first();
+      
+        if ($data) {
+            $response = [
+                'status' => 200,
+                'error' => null,
+                'messages' => "Member Found",
+                "data" => $data,
+            ];
+            return $this->respond($response);
+        } else {
+            return $this->failNotFound('No Member Found with id ' . $id);
+        }
     }
 
     /**
@@ -43,7 +68,24 @@ class Deposito extends ResourceController
      */
     public function create()
     {
-        //
+        $model = new DepositoModel();
+
+        $data = [
+            'conta' => $this->request->getVar('conta'),
+            'valor' => $this->request->getVar('valor'),
+            'moeda' => $this->request->getVar('moeda'),
+            'simbolo' => $this->request->getVar('simbolo'),
+        ];
+
+        $model->insert($data);
+
+        $response = [
+            'status' => 200,
+            'error' => null,
+            'messages' => "Member Saved",
+        ];
+      
+        return $this->respondCreated($response);
     }
 
     /**
@@ -53,7 +95,7 @@ class Deposito extends ResourceController
      */
     public function edit($id = null)
     {
-        //
+        return $this->failNotFound('Não é possivel editar um depósito.');
     }
 
     /**
@@ -63,7 +105,7 @@ class Deposito extends ResourceController
      */
     public function update($id = null)
     {
-        //
+        return $this->failNotFound('Não é possivel atualizar um depósito.');
     }
 
     /**
@@ -73,6 +115,7 @@ class Deposito extends ResourceController
      */
     public function delete($id = null)
     {
-        //
+        return $this->failNotFound('Não é possivel apagar um depósito.');
+
     }
 }
