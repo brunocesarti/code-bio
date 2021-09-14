@@ -73,8 +73,7 @@ class Deposito extends ResourceController
         $data = [
             'conta' => $this->request->getVar('conta'),
             'valor' => $this->request->getVar('valor'),
-            'moeda' => $this->request->getVar('moeda'),
-            'simbolo' => $this->request->getVar('simbolo'),
+            'moeda' => $this->request->getVar('moeda')
         ];
 
         $model->insert($data);
