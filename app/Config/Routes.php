@@ -50,6 +50,7 @@ $routes->get('/', 'Home::index');
 $routes->resource('deposito'); // Rota para endpoint deposito
 $routes->resource('saque'); // Rota para endpoint saque
 $routes->resource('saldo'); // Rota para endpoint saldo
+$routes->resource('extrato'); // Rota para endpoint extrato (Extra)
 
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
     require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
