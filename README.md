@@ -6,6 +6,14 @@ Diagrama do Modelo ER construído:
 
 ![Modelo ER code-bio](https://user-images.githubusercontent.com/12937320/133000375-7d817ce0-753a-4651-b128-9658de94f246.png)
 
+# Para utilizar o ambiente de desenvolvimento
+
+No arquivo env, altere:
+    
+    CI_ENVIRONMENT = production para CI_ENVIRONMENT = development
+
+Depois renomei o arquivo de env para .env, isso ativa o ambiente de desenvolvimento.
+
 # CodeIgniter 4 Application Starter
 
 ## What is CodeIgniter?
