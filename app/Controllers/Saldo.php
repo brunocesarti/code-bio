@@ -70,7 +70,7 @@ class Saldo extends ResourceController
      */
     public function create()
     {
-        $model = new SaldoModel();
+      /*  $model = new SaldoModel();
 
         $data = [
             'conta' => $this->request->getVar('conta'),
@@ -87,7 +87,9 @@ class Saldo extends ResourceController
             'messages' => "Transação realizada com sucesso!",
         ];
       
-        return $this->respondCreated($response);
+        return $this->respondCreated($response);*/
+        return $this->failNotFound('O saldo é atualizado ao fazer um depósito ou saque!');
+
     }
 
     /**
