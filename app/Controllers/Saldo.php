@@ -19,12 +19,18 @@ class Saldo extends ResourceController
         $model = new SaldoModel();
       
         $data = $model->findAll();
-      
+
+        $valor = $model->select('SUM(valor) as saldo')
+                   ->where('moeda', 'BRL')
+                   ->findAll();
+
         $response = [
             'status' => 200,
             'error' => null,
             'messages' => "Transações Encontradas",
-            "data" => $data,
+            'moeda' => 'BRL',
+            'saldo Total' => $valor,
+            //"data" => $data,
         ];
         return $this->respond($response);
     }
@@ -34,17 +40,25 @@ class Saldo extends ResourceController
      *
      * @return mixed
      */
-    public function show($id = null)
+    public function show($conta = null, $moeda = null)
     {
         $model = new SaldoModel();
       
-        $data = $model->where(['id' => $id])->first();
+       // $data = $model->where(['id' => $id])->first();
+        $data;
+
+        $data = $model->select('conta')
+                   ->select('moeda')
+                   ->select('SUM(valor) as saldo')
+                   ->where('moeda', $moeda)
+                   ->where('conta', $conta)
+                   ->findAll();
       
         if ($data) {
             $response = [
                 'status' => 200,
                 'error' => null,
-                'messages' => "Transações Encontradas",
+                'messages' => "Saldo disponível",
                 "data" => $data,
             ];
             return $this->respond($response);
@@ -70,24 +84,6 @@ class Saldo extends ResourceController
      */
     public function create()
     {
-      /*  $model = new SaldoModel();
-
-        $data = [
-            'conta' => $this->request->getVar('conta'),
-            'valor' => $this->request->getVar('valor'),
-            'moeda' => $this->request->getVar('moeda'),
-            'operacao' => $this->request->getVar('operacao'),
-        ];
-
-        $model->insert($data);
-
-        $response = [
-            'status' => 200,
-            'error' => null,
-            'messages' => "Transação realizada com sucesso!",
-        ];
-      
-        return $this->respondCreated($response);*/
         return $this->failNotFound('O saldo é atualizado ao fazer um depósito ou saque!');
 
     }
