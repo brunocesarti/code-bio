@@ -87,7 +87,7 @@ class Saque extends ResourceController
             'conta' => $this->request->getVar('conta'),
             'valor' => ($this->request->getVar('valor'))*(-1),
             'moeda' => $this->request->getVar('moeda'),
-            'operacao' => 'deposito',
+            'operacao' => 'saque',
         ];
 
         $model2->insert($data);
