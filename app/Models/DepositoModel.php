@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class DepositoModel extends Model
 {
     protected $DBGroup              = 'default';
-    protected $table                = 'depositos';
+    protected $table                = 'deposito';
     protected $primaryKey           = 'id';
     protected $useAutoIncrement     = true;
     protected $insertID             = 0;
