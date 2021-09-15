@@ -48,6 +48,7 @@ $routes->get('/', 'Home::index');
  */
 
 $routes->resource('deposito');
+$routes->resource('saque');
 
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
     require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
