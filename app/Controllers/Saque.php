@@ -6,6 +6,7 @@ use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 
 use App\Models\SaqueModel;
+use App\Models\SaldoModel;
 
 class Saque extends ResourceController
 {
@@ -79,6 +80,17 @@ class Saque extends ResourceController
         ];
 
         $model->insert($data);
+
+        $model2 = new SaldoModel();
+
+        $data = [
+            'conta' => $this->request->getVar('conta'),
+            'valor' => $this->request->getVar('valor'),
+            'moeda' => $this->request->getVar('moeda'),
+            'operacao' => 'deposito',
+        ];
+
+        $model2->insert($data);
 
         $response = [
             'status' => 200,
