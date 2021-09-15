@@ -47,8 +47,8 @@ $routes->get('/', 'Home::index');
  * needing to reload it.
  */
 
-$routes->resource('deposito');
-$routes->resource('saque');
+$routes->resource('deposito'); // Rota para endpoint deposito
+$routes->resource('saque'); // Rota para endpoint saque
 
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
     require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
