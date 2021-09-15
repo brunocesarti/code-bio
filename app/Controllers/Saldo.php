@@ -3,6 +3,9 @@
 namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
+use CodeIgniter\API\ResponseTrait;
+
+use App\Models\SaldoModel;
 
 class Saldo extends ResourceController
 {
@@ -13,7 +16,17 @@ class Saldo extends ResourceController
      */
     public function index()
     {
-        //
+        $model = new SaldoModel();
+      
+        $data = $model->findAll();
+      
+        $response = [
+            'status' => 200,
+            'error' => null,
+            'messages' => "Saldos Encontrados",
+            "data" => $data,
+        ];
+        return $this->respond($response);
     }
 
     /**
@@ -23,7 +36,21 @@ class Saldo extends ResourceController
      */
     public function show($id = null)
     {
-        //
+        $model = new SaldoModel();
+      
+        $data = $model->where(['id' => $id])->first();
+      
+        if ($data) {
+            $response = [
+                'status' => 200,
+                'error' => null,
+                'messages' => "Saldos Encontrados",
+                "data" => $data,
+            ];
+            return $this->respond($response);
+        } else {
+            return $this->failNotFound('Nenhum saldo encontrado com o id: ' . $id);
+        }
     }
 
     /**
@@ -43,7 +70,24 @@ class Saldo extends ResourceController
      */
     public function create()
     {
-        //
+        $model = new SaldoModel();
+
+        $data = [
+            'conta' => $this->request->getVar('conta'),
+            'valor' => $this->request->getVar('valor'),
+            'moeda' => $this->request->getVar('moeda'),
+            'operacao' => $this->request->getVar('operacao'),
+        ];
+
+        $model->insert($data);
+
+        $response = [
+            'status' => 200,
+            'error' => null,
+            'messages' => "Saldo realizado com sucesso!",
+        ];
+      
+        return $this->respondCreated($response);
     }
 
     /**
@@ -53,7 +97,7 @@ class Saldo extends ResourceController
      */
     public function edit($id = null)
     {
-        //
+        return $this->failNotFound('Não é possivel editar um saldo.');
     }
 
     /**
@@ -63,7 +107,7 @@ class Saldo extends ResourceController
      */
     public function update($id = null)
     {
-        //
+        return $this->failNotFound('Não é possivel atualizar um saldo.');
     }
 
     /**
@@ -73,6 +117,7 @@ class Saldo extends ResourceController
      */
     public function delete($id = null)
     {
-        //
+        return $this->failNotFound('Não é possivel apagar um saldo.');
+
     }
 }
