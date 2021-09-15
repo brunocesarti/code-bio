@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class SaqueModel extends Model
 {
     protected $DBGroup              = 'default';
-    protected $table                = 'saques';
+    protected $table                = 'saque';
     protected $primaryKey           = 'id';
     protected $useAutoIncrement     = true;
     protected $insertID             = 0;
