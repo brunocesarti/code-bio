@@ -16,6 +16,21 @@ class Saldo extends ResourceController
      */
     public function index()
     {
+
+        //$URL = 'https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas?$top=100&$format=json&$select=simbolo'; //somente simbolo
+        $URL = 'https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas?$top=100&$format=json&$select=simbolo,nomeFormatado'; // simbolo e nome
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_URL, $URL);
+        $data1 = curl_exec($ch);
+        curl_close($ch);
+
+        $data2 = json_decode($data1);
+        
+        //echo $data2->value;
+        //print_r($data2->value);
+
+//==============================================
         $model = new SaldoModel();
       
         // $data = $model->where(['id' => $id])->first();
@@ -32,6 +47,7 @@ class Saldo extends ResourceController
                  'error' => null,
                  'messages' => "Saldo disponível",
                  "data" => $data,
+                 'moedas ptax' => $data2->value,
              ];
              return $this->respond($response);
          } else {
