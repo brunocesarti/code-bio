@@ -62,6 +62,27 @@ class Saldo extends ResourceController
      */
     public function show($conta = null, $moeda = null)
     {
+
+        $date = date('m-d-Y'); //09-15-2021
+//        echo $date;
+//        die();
+        $URL = 'https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda=' ."'". "$moeda" ."'".'&@dataCotacao='."'"."$date"."'".'&$top=100&$format=json&$select=cotacaoCompra,cotacaoVenda,tipoBoletim';
+
+//        echo $URL;
+//        die();
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_URL, $URL);
+        $data1 = curl_exec($ch);
+        curl_close($ch);
+
+        $data2 = json_decode($data1);
+        
+        //echo $data2->value;
+        //print_r($data2->value);
+
+//==============================================
         $model = new SaldoModel();
       
        // $data = $model->where(['id' => $id])->first();
@@ -79,6 +100,7 @@ class Saldo extends ResourceController
                 'error' => null,
                 'messages' => "Saldo disponível",
                 "data" => $data,
+                "Fechamento PTAX" => end($data2->value),
             ];
             return $this->respond($response);
         } else {
