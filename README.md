@@ -6,7 +6,8 @@ Diagrama do Modelo ER construído:
 
 ![Modelo ER code-bio](https://user-images.githubusercontent.com/12937320/133000375-7d817ce0-753a-4651-b128-9658de94f246.png)
 
-# Para utilizar o ambiente de desenvolvimento
+# Configurações realizadas no DEV
+## Para utilizar o ambiente de desenvolvimento
 
 No arquivo env, altere:
     
