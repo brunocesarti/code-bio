@@ -3,7 +3,9 @@
 namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
-use App\Models\TransacoesModel;
+use CodeIgniter\API\ResponseTrait;
+
+use App\Models\DepositoModel;
 
 class Deposito extends ResourceController
 {
@@ -21,7 +23,7 @@ class Deposito extends ResourceController
         $response = [
             'status' => 200,
             'error' => null,
-            'messages' => "Members Found",
+            'messages' => "Depósitos Encontrados",
             "data" => $data,
         ];
         return $this->respond($response);
@@ -42,12 +44,12 @@ class Deposito extends ResourceController
             $response = [
                 'status' => 200,
                 'error' => null,
-                'messages' => "Member Found",
+                'messages' => "Depósitos Encontrados",
                 "data" => $data,
             ];
             return $this->respond($response);
         } else {
-            return $this->failNotFound('No Member Found with id ' . $id);
+            return $this->failNotFound('Nenhum depósito encontrado com o id: ' . $id);
         }
     }
 
@@ -73,7 +75,7 @@ class Deposito extends ResourceController
         $data = [
             'conta' => $this->request->getVar('conta'),
             'valor' => $this->request->getVar('valor'),
-            'moeda' => $this->request->getVar('moeda')
+            'moeda' => $this->request->getVar('moeda'),
         ];
 
         $model->insert($data);
@@ -81,7 +83,7 @@ class Deposito extends ResourceController
         $response = [
             'status' => 200,
             'error' => null,
-            'messages' => "Member Saved",
+            'messages' => "Depósito realizado com sucesso!",
         ];
       
         return $this->respondCreated($response);
