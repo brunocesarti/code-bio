@@ -18,21 +18,25 @@ class Saldo extends ResourceController
     {
         $model = new SaldoModel();
       
-        $data = $model->findAll();
-
-        $valor = $model->select('SUM(valor) as saldo')
-                   ->where('moeda', 'BRL')
-                   ->findAll();
-
-        $response = [
-            'status' => 200,
-            'error' => null,
-            'messages' => "Transações Encontradas",
-            'moeda' => 'BRL',
-            'saldo Total' => $valor,
-            //"data" => $data,
-        ];
-        return $this->respond($response);
+        // $data = $model->where(['id' => $id])->first();
+        //$conta = 1;
+         $data = $model->select('conta')
+                    ->select('moeda')
+                    ->select('valor')
+        //            ->where('conta', $conta)
+                    ->findAll();
+       
+         if ($data) {
+             $response = [
+                 'status' => 200,
+                 'error' => null,
+                 'messages' => "Saldo disponível",
+                 "data" => $data,
+             ];
+             return $this->respond($response);
+         } else {
+             return $this->failNotFound('Nenhuma transação encontrada com o id: ' . $id);
+         }
     }
 
     /**
@@ -45,7 +49,6 @@ class Saldo extends ResourceController
         $model = new SaldoModel();
       
        // $data = $model->where(['id' => $id])->first();
-        $data;
 
         $data = $model->select('conta')
                    ->select('moeda')
