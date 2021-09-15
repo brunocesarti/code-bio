@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class SaldoModel extends Model
 {
     protected $DBGroup              = 'default';
-    protected $table                = 'saldos';
+    protected $table                = 'saldo';
     protected $primaryKey           = 'id';
     protected $useAutoIncrement     = true;
     protected $insertID             = 0;
