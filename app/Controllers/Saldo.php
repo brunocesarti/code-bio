@@ -23,7 +23,7 @@ class Saldo extends ResourceController
         $response = [
             'status' => 200,
             'error' => null,
-            'messages' => "Saldos Encontrados",
+            'messages' => "Transações Encontradas",
             "data" => $data,
         ];
         return $this->respond($response);
@@ -44,12 +44,12 @@ class Saldo extends ResourceController
             $response = [
                 'status' => 200,
                 'error' => null,
-                'messages' => "Saldos Encontrados",
+                'messages' => "Transações Encontradas",
                 "data" => $data,
             ];
             return $this->respond($response);
         } else {
-            return $this->failNotFound('Nenhum saldo encontrado com o id: ' . $id);
+            return $this->failNotFound('Nenhuma transação encontrada com o id: ' . $id);
         }
     }
 
@@ -84,7 +84,7 @@ class Saldo extends ResourceController
         $response = [
             'status' => 200,
             'error' => null,
-            'messages' => "Saldo realizado com sucesso!",
+            'messages' => "Transação realizada com sucesso!",
         ];
       
         return $this->respondCreated($response);
@@ -97,7 +97,7 @@ class Saldo extends ResourceController
      */
     public function edit($id = null)
     {
-        return $this->failNotFound('Não é possivel editar um saldo.');
+        return $this->failNotFound('Não é possivel editar uma transação.');
     }
 
     /**
@@ -107,7 +107,7 @@ class Saldo extends ResourceController
      */
     public function update($id = null)
     {
-        return $this->failNotFound('Não é possivel atualizar um saldo.');
+        return $this->failNotFound('Não é possivel atualizar uma transação.');
     }
 
     /**
@@ -117,7 +117,7 @@ class Saldo extends ResourceController
      */
     public function delete($id = null)
     {
-        return $this->failNotFound('Não é possivel apagar um saldo.');
+        return $this->failNotFound('Não é possivel apagar uma transação.');
 
     }
 }
