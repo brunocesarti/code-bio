@@ -3,6 +3,9 @@
 namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
+use CodeIgniter\API\ResponseTrait;
+
+use App\Models\SaldoModel;
 
 class Extrato extends ResourceController
 {
@@ -13,7 +16,17 @@ class Extrato extends ResourceController
      */
     public function index()
     {
-        //
+        $model = new SaldoModel();
+      
+        $data = $model->findAll();
+      
+        $response = [
+            'status' => 200,
+            'error' => null,
+            'messages' => "Transações Encontradas",
+            "data" => $data,
+        ];
+        return $this->respond($response);
     }
 
     /**
@@ -23,7 +36,21 @@ class Extrato extends ResourceController
      */
     public function show($id = null)
     {
-        //
+        $model = new SaldoModel();
+      
+        $data = $model->where(['id' => $id])->first();
+      
+        if ($data) {
+            $response = [
+                'status' => 200,
+                'error' => null,
+                'messages' => "Transações Encontradas",
+                "data" => $data,
+            ];
+            return $this->respond($response);
+        } else {
+            return $this->failNotFound('Nenhuma transação encontrada com o id: ' . $id);
+        }
     }
 
     /**
@@ -43,7 +70,8 @@ class Extrato extends ResourceController
      */
     public function create()
     {
-        //
+        return $this->failNotFound('O Extrato é atualizado ao fazer um depósito ou saque!');
+
     }
 
     /**
@@ -53,7 +81,7 @@ class Extrato extends ResourceController
      */
     public function edit($id = null)
     {
-        //
+        return $this->failNotFound('Não é possivel editar uma transação.');
     }
 
     /**
@@ -63,7 +91,7 @@ class Extrato extends ResourceController
      */
     public function update($id = null)
     {
-        //
+        return $this->failNotFound('Não é possivel atualizar uma transação.');
     }
 
     /**
@@ -73,6 +101,7 @@ class Extrato extends ResourceController
      */
     public function delete($id = null)
     {
-        //
+        return $this->failNotFound('Não é possivel apagar uma transação.');
+
     }
 }
