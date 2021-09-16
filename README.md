@@ -2,9 +2,22 @@
 
 Desafio técnico para avaliar os conhecimentos técnicos necessários para realização das atividades no dia a dia do cargo de Programador de Sistemas.
 
-Diagrama do Modelo ER construído:
+## Diagrama do Modelo ER
+
+Nossa versão inicial da modelagem se deu desta forma:
 
 ![Modelo ER code-bio](https://user-images.githubusercontent.com/12937320/133000375-7d817ce0-753a-4651-b128-9658de94f246.png)
+
+Durante implementação, optei por separar a tabela transações em 3 tabelas distintas para facilitar a construção da API.
+
+![Modelo ER code-bio Modificado](https://github.com/brunocesarti/code-bio/blob/main/Modelo%20ER%20code-bio-tabelas-separadas.png)
+
+Observando que o campo conta nas 3 tabelas, se referem a mesma conta de registro, e futuramente pode ser criada a tabela conta e vinculado o id da mesma como chave estrangeira nas tabelas deposito, saque e saldo. conforme necessidade e contexto da aplicação, a estrutura pode remodelada.
+
+# Quadro de tarefas
+
+Para melhor organização das tarefas e fluxos do projeto, optei por construir um quadro de tarefas (modelo Kanban), disponível em: https://github.com/brunocesarti/code-bio/projects/1
+
 
 # Configurações realizadas no DEV
 ## Para utilizar o ambiente de desenvolvimento
