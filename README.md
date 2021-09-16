@@ -87,6 +87,38 @@ No arquivo env, altere:
 
 Depois renomei o arquivo de env para .env, isso ativa o ambiente de desenvolvimento.
 
+# Execução da API
+
+## Configurações de banco de dados
+    
+    Necessário ter ambiente configurado para utilizar o banco de dados MySQL.
+    Importar o banco de dados
+    
+## Clonar repositório
+    
+    Clone este repositório.
+    
+## Atualizar composer
+ 
+    Na raiz do projeto, dê um "composer install" para atualiza-lo. Mais detalhes pode ser encontrado na documentação do framework.
+    
+## Start do projeto
+    
+    Na raiz do projeto, utilize o comando " php spark serve". Por padrão a primeira execução roda na porta 8080, se esta estiver ocupada, passa para a próxima, ficar atento a este detalhe.
+    
+## Endpoints implementados
+
+saque: http://localhost:8080/saque
+deposito: http://localhost:8080/deposito
+saldo: http://localhost:8080/saldo
+extrato: http://localhost:8080/extrato
+
+É possível utilizar a ferramenta Postman ou outra de sua preferência, para testar os endpoints para os verbos da API, conforme se observa na lista de rotas.
+
+# Pendências
+
+Ainda esta pendente finalizar alguns ajustes no funcionamento dos endpoints e os testes utilizando o PHPUnit.
+
 # CodeIgniter 4 Application Starter
 
 ## What is CodeIgniter?
