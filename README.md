@@ -18,6 +18,33 @@ Observando que o campo conta nas 3 tabelas, se referem a mesma conta de registro
 
 Para melhor organização das tarefas e fluxos do projeto, optei por construir um quadro de tarefas (modelo Kanban), disponível em: https://github.com/brunocesarti/code-bio/projects/1
 
+![Quadro de tarefas](https://github.com/brunocesarti/code-bio/blob/main/documentacao/kanban%20tarefas.png)
+
+# Detalhes sobre a construção da API RESTful
+
+Para implementação, utilizei o framework CodeIgniter, sua documentação esta disponível em: https://codeigniter4.github.io/userguide/
+
+O desafio propõe a construção de endpoints para saque, deposito, saldo e extrato (extra), para execução dos mesmos foram construidas as rotas para os endpoints desejado:
+
+![Rotas para os endpoints](https://github.com/brunocesarti/code-bio/blob/main/documentacao/Rotas%20geradas.png)
+
+A aplicação foi testada, utilizando da ferramenta Postman ( https://www.postman.com/ ):
+
+![Postman](https://github.com/brunocesarti/code-bio/blob/main/documentacao/Postman.png)
+
+A API construida utililiza da API do Banco Central PTAX - https://dadosabertos.bcb.gov.br/dataset/taxas-de-cambio-todos-os-boletins-diarios/resource/9d07b9dc-c2bc-47ca-af92-10b18bcd0d69
+
+![API Banco Central](https://github.com/brunocesarti/code-bio/blob/main/documentacao/API%20banco%20central.png)
+
+As moedas disponíveis:
+
+![Moedas](https://github.com/brunocesarti/code-bio/blob/main/documentacao/Moedas%20PTAX.png)
+
+É utilizado o fechamento PTAX na implementação da API: 
+
+![Fechamento PTAX](https://github.com/brunocesarti/code-bio/blob/main/documentacao/PTAX%20Fechamento.png)
+
+
 
 # Configurações realizadas no DEV
 ## Para utilizar o ambiente de desenvolvimento
