@@ -14,11 +14,43 @@ Durante implementação, optei por separar a tabela transações em 3 tabelas di
 
 Observando que o campo conta nas 3 tabelas, se referem a mesma conta de registro, e futuramente pode ser criada a tabela conta e vinculado o id da mesma como chave estrangeira nas tabelas deposito, saque e saldo. conforme necessidade e contexto da aplicação, a estrutura pode remodelada.
 
+
+# Banco de dados
+
+O script de construção do Banco de dados esta disponível na raiz do projeto com o nome "codebio.sql"
+
+![Banco de dados](https://github.com/brunocesarti/code-bio/blob/main/documentacao/BD%20codebio.png)
+
+O banco contém 3 tabelas:
+
+Tabela deposito:
+
+![Tabela deposito](https://github.com/brunocesarti/code-bio/blob/main/documentacao/tabela%20deposito.png)
+
+Tabela saldo:
+
+![Tabela saldo](https://github.com/brunocesarti/code-bio/blob/main/documentacao/tabela%20saldo.png)
+
+Tabela saque:
+
+![Tabela saque](https://github.com/brunocesarti/code-bio/blob/main/documentacao/tabela%20saque.png)
+
+
 # Quadro de tarefas
 
 Para melhor organização das tarefas e fluxos do projeto, optei por construir um quadro de tarefas (modelo Kanban), disponível em: https://github.com/brunocesarti/code-bio/projects/1
 
 ![Quadro de tarefas](https://github.com/brunocesarti/code-bio/blob/main/documentacao/kanban%20tarefas.png)
+
+Também é possível gerenciar as issues atreladas ao quadro de tarefas:
+
+Issues abertas:
+
+![Issues abertas](https://github.com/brunocesarti/code-bio/blob/main/documentacao/issues%20abertas.png)
+
+Issues fechadas:
+
+![Issues fechadas](https://github.com/brunocesarti/code-bio/blob/main/documentacao/issues%20fechadas.png)
 
 # Detalhes sobre a construção da API RESTful
 
